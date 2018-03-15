@@ -9,16 +9,7 @@
   </head>
   <body ng-controller="PhoneListController">
 
-    <ul ng-repeat="phone in phones">
-      <li>
-        <span>{{ phone.name }}</span>
-        <p>
-          {{ phone.snippet }}
-        </p>
-      </li>
-    </ul>
-
-    <p>Total number of phones: {{ phones.length }}</p>
+    <phone-list></phone-list>
 
   </body>
 </html>
