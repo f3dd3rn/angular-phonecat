@@ -1,23 +1,12 @@
-function PhoneListController() {
-  const ctrl = this;
+function PhoneListController($http) {
+  $http.get('data/phones.json').then((response) => this.phones = response.data);
 
-  ctrl.phones = [
-    {
-      name: 'Nexus S',
-      snippet: 'Fast just got faster with Nexus S.'
-    }, {
-      name: 'Motorola XOOM™ with Wi-Fi',
-      snippet: 'The Next, Next Generation tablet.'
-    }, {
-      name: 'MOTOROLA XOOM™',
-      snippet: 'The Next, Next Generation tablet.'
-    }
-  ];
+  this.orderProp = 'name';
 }
 
 angular.
   module('phoneList').
   component('phoneList', {
     templateUrl: 'phone-list/phone-list.template.html',
-    controller: PhoneListController
+    controller: ['$http', PhoneListController]
   });

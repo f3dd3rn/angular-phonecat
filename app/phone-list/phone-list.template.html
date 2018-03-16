@@ -1,8 +1,22 @@
-<ul ng-repeat="phone in $ctrl.phones">
+<label>Search phones:&nbsp;</label>
+<input ng-model="$ctrl.query" />
+
+<label>Order by&nbsp;</label>
+<select ng-model="$ctrl.orderProp">
+  <option value="name" selected>A-z</option>
+  <option value="-name" selected>Z-a</option>
+  <option value="age">Newest</option>
+  <option value="-age">Oldest</option>
+</select>
+
+<p>Total number of phones: {{ phones.length }}</p>
+
+<ul class="phones" ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp as phones">
   <li>
-    <span>{{ phone.name }}</span>
+    <a href="#/phones/{{ phone.id }}">
+      <img ng-src="{{phone.imageUrl}}" alt="{{phone.name}}" />
+    </a>
+    <span><a href="#/phones/{{ phone.ID }}">{{ phone.name }}</a></span>
     <p>{{ phone.snippet }}</p>
   </li>
 </ul>
-
-<p>Total number of phones: {{ $ctrl.phones.length }}</p>
