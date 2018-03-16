@@ -15,7 +15,9 @@ function PhoneListController() {
   ];
 }
 
-angular.module('phonecatApp').component('phoneList', {
-  templateUrl: 'partials/phoneList.html',
-  controller: PhoneListController
-});
+angular.
+  module('phoneList').
+  component('phoneList', {
+    templateUrl: 'phone-list/phone-list.template.html',
+    controller: PhoneListController
+  });

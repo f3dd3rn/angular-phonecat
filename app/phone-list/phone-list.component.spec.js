@@ -1,7 +1,7 @@
-describe('PhoneListController', function() {
+describe('phoneList', function() {
   let $componentController;
 
-  beforeEach(module('phonecatApp'));
+  beforeEach(module('phoneList'));
   beforeEach(inject(function(_$componentController_) {
     $componentController = _$componentController_('phoneList');
   }));
