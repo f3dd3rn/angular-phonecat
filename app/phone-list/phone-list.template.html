@@ -13,10 +13,10 @@
 
 <ul class="phones" ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp as phones">
   <li>
-    <a href="#/phones/{{ phone.id }}">
-      <img ng-src="{{phone.imageUrl}}" alt="{{phone.name}}" />
+    <a href="/#!/phones/{{ phone.id }}">
+      <img ng-src="{{ phone.imageUrl }}" alt="{{ phone.name }}" />
     </a>
-    <span><a href="#/phones/{{ phone.ID }}">{{ phone.name }}</a></span>
+    <span><a href="/#!/phones/{{ phone.id }}">{{ phone.name }}</a></span>
     <p>{{ phone.snippet }}</p>
   </li>
 </ul>

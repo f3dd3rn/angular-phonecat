@@ -5,6 +5,7 @@ describe('phoneList', function() {
   describe('controller', () => {
     let $componentController,
         $httpBackend;
+
     beforeEach(inject(function(_$componentController_, _$httpBackend_) {
       $httpBackend = _$httpBackend_;
       $httpBackend.expectGET('data/phones.json')

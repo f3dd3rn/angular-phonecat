@@ -7,10 +7,16 @@
 // see:  https://docs.angularjs.org/api/ngMockE2E/service/$httpBackend
 
 describe('PhoneCat Application', function() {
+
+  it('should redirect root to `/#!/phones', function() {
+    browser.get('');
+    expect(browser.getLocationAbsUrl()).toBe('/phones');
+  });
+
   describe('phoneList', function() {
 
     beforeEach(function() {
-      browser.get('');
+      browser.get('/#!/phones');
     });
 
     it('filters the phone list as a user types into the search box', function() {
@@ -39,7 +45,7 @@ describe('PhoneCat Application', function() {
         });
       }
 
-      queryField.sendKeys('tablet');   // Let's narrow the dataset to make the assertions shorter
+      queryField.sendKeys('tablet'); // Let's narrow the dataset to make the assertions shorter
 
       expect(getNames()).toEqual([
         'MOTOROLA XOOM\u2122',
@@ -54,13 +60,27 @@ describe('PhoneCat Application', function() {
       ]);
     });
 
-    it('renders render phone specific links', function() {
+    it('renders phone specific links', function() {
       const query = element(by.model('$ctrl.query'));
       query.sendKeys('nexus');
 
       element.all(by.css('.phones li a')).first().click();
-      expect(browser.getLocationAbsUrl()).toBe('/phones/nexus-s');
+      browser.getCurrentUrl().
+        then(function(url) {
+          expect(url).toContain('/#!/phones/nexus-s');
+        });
     });
 
   });
+
+  describe('View: Phone detail', function() {
+    beforeEach(function() {
+      browser.get('index.html#!/phones/nexus-s');
+    });
+
+    it('should display the `nexus-s` page', function() {
+      expect(element(by.binding('$ctrl.phone.name')).getText()).toBe('Nexus S');
+    });
+  });
+
 });
