@@ -8,7 +8,7 @@ describe('phoneList', function() {
 
     beforeEach(inject(function(_$componentController_, _$httpBackend_) {
       $httpBackend = _$httpBackend_;
-      $httpBackend.expectGET('data/phones.json')
+      $httpBackend.expectGET('data/phones/phones.json')
                   .respond([{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
 
       $componentController = _$componentController_('phoneList');
